@@ -44,7 +44,7 @@ This is a streamlit application which scans both the bestlap and leaderboard tab
 
 
 ## Enabling dashboards as services in Linux
-To ensure the dashboards are always available (even when rebooting node / ending SSH session etc) it is advised to run them as services. See below example service file you can configure to ensure the dashboards are always running (note that we are ensuring the python libraries are also loaded correctly using Environment=...):
+To ensure the dashboards are always available (even when rebooting node / ending SSH session etc) it is advised to run them as services. See below example service file you can configure (save as "filename.service" in directory /etc/systemd/system/) to ensure the dashboards are always running (note that we are ensuring the python libraries are also loaded correctly using Environment=...):
 
   [Unit]
 
