@@ -44,7 +44,7 @@ This is a streamlit application which scans both the bestlap and leaderboard tab
 
 
 ## Enabling dashboards as services in Linux
-To ensure the dashboards are always available (even when rebooting node / ending SSH session etc) it is advised to run them as services. See below example service file you can configure to ensure the dashboards are always running:
+To ensure the dashboards are always available (even when rebooting node / ending SSH session etc) it is advised to run them as services. See below example service file you can configure to ensure the dashboards are always running (note that we are ensuring the python libraries are also loaded correctly using Environment=...):
 
   [Unit]
   Description=F1 Demo Frontend Streamlit App
@@ -69,19 +69,19 @@ To ensure the dashboards are always available (even when rebooting node / ending
 
 You can then enable the service as follows:
 
-  # Reload systemd
+  // Reload systemd
   sudo systemctl daemon-reload
   
-  # Enable it to start on boot
+  // Enable it to start on boot
   sudo systemctl enable f1demo-frontend.service
   
-  # Start the service now
+  // Start the service now
   sudo systemctl start f1demo-frontend.service
   
-  # Check the status
+  // Check the status
   sudo systemctl status f1demo-frontend.service
   
-  # View logs
+  // View logs
   sudo journalctl -u f1demo-frontend.service -f
 
 You can also do similar for the producer script:
