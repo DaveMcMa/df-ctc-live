@@ -5,6 +5,8 @@ Public repository of all code relating to the data fabric CTC telemetry demo.
 ## Pre-requisites
 You must have a Windows rig with iRacing installed and a HPE Data Fabric cluster (latest tested version 8.0 - older versions should also work fine).
 
+As many scripts are coded to use mapr user it is strongly recommend that on the client or cluster machines where you run producers, dashboards & jobs to have a long lived authentication to the cluster to ensure scripts do not fail due to expired ticket to the HPE Data Fabric. As user mapr, you can run: maprlogin password -duration 365:0:0
+
 ## High-level Demo Architecture
 The end-state of this demo consists of 2 dashboards for displaying the ability of HPE Data Fabric to serve realtime and historical analytics from a single intelligent data platform that stores, ingests & transforms data both in realtime and batch mode. 
 
