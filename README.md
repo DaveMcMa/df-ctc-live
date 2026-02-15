@@ -12,7 +12,7 @@ The iRacing rig produces racing telemetry data in realtime that is exposed via a
 
 A producer script located on the data fabric (or external client) subscribes to the websocket and pushes data live & in-sequence to a HPE Data Fabric Stream.
 
-After an iRacing session is comlpeted, all telemetry data (which includes GPS data - not exposed during live race-time) is stored into a proprietary binary file format (.ibt)
+After an iRacing session is completed, all telemetry data (which includes GPS data - not exposed during live race-time) is stored into a proprietary binary file format (.ibt)
 
 There is a script included here that runs on the iRacing host and uploads (on a periodic basis, eg. daily) all new ibt files generated to the HPE Data Fabric Object Store.
 
