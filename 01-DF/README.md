@@ -70,18 +70,23 @@ To ensure the dashboards are always available (even when rebooting node / ending
 You can then enable the service as follows:
 
   // Reload systemd
+  
   sudo systemctl daemon-reload
   
   // Enable it to start on boot
+  
   sudo systemctl enable f1demo-frontend.service
   
   // Start the service now
+  
   sudo systemctl start f1demo-frontend.service
   
   // Check the status
+  
   sudo systemctl status f1demo-frontend.service
   
   // View logs
+  
   sudo journalctl -u f1demo-frontend.service -f
 
 You can also do similar for the producer script:
