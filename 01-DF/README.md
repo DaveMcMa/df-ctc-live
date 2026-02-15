@@ -47,25 +47,57 @@ This is a streamlit application which scans both the bestlap and leaderboard tab
 To ensure the dashboards are always available (even when rebooting node / ending SSH session etc) it is advised to run them as services. See below example service file you can configure to ensure the dashboards are always running (note that we are ensuring the python libraries are also loaded correctly using Environment=...):
 
   [Unit]
+
+  
   Description=F1 Demo Frontend Streamlit App
+
+  
   After=network.target
   
+  
   [Service]
+
+  
   Type=simple
+
+  
   User=mapr
+  
+  
   WorkingDirectory=/home/mapr/f1demo
+  
+  
   Environment="LIBRARY_PATH=/opt/mapr/lib/"
+  
+  
   Environment="C_INCLUDE_PATH=/opt/mapr/include/"
+  
+  
   Environment="LD_LIBRARY_PATH=/opt/mapr/lib"
+  
+  
   Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+  
+  
   ExecStart=/usr/local/bin/streamlit run /home/mapr/f1demo/frontend.py --server.port=8501 --server.address=0.0.0.0
+  
+  
   Restart=always
+  
+  
   RestartSec=10
+  
+  
   StandardOutput=append:/home/mapr/f1demo/frontend.log
+  
+  
   StandardError=append:/home/mapr/f1demo/frontend.log
+
+
   
   [Install]
   WantedBy=multi-user.target
+
 
 You can then enable the service as follows:
 
@@ -102,23 +134,58 @@ You can then enable the service as follows:
 
 You can also do similar for the producer script:
 
+
   [Unit]
-  Description=F1 Demo Producer Script
-  After=network.target
+
   
+  Description=F1 Demo Producer Script
+  
+  
+  After=network.target
+
+
+
   [Service]
+
+  
   Type=simple
+  
+  
   User=mapr
+  
+  
   WorkingDirectory=/home/mapr/f1demo
+  
+  
   Environment="LIBRARY_PATH=/opt/mapr/lib/"
+  
+  
   Environment="C_INCLUDE_PATH=/opt/mapr/include/"
+  
+  
   Environment="LD_LIBRARY_PATH=/opt/mapr/lib"
+  
+  
   Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+  
+  
   ExecStart=/usr/bin/python3 /home/mapr/f1demo/producer.py
+  
+  
   Restart=always
+  
+  
   RestartSec=10
+  
+  
   StandardOutput=append:/home/mapr/f1demo/producer.log
+  
+  
   StandardError=append:/home/mapr/f1demo/producer.log
+
+
   
   [Install]
+  
+  
   WantedBy=multi-user.target
