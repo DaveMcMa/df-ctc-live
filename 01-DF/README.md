@@ -42,3 +42,67 @@ This is a streamlit application which listens to the live HPE Data Fabric stream
 ### df_frontend_table
 This is a streamlit application which scans both the bestlap and leaderboard tables and displays telemetry from the best lap on record & the top ten lap times for the corresponding track
 
+
+## Enabling dashboards as services in Linux
+To ensure the dashboards are always available (even when rebooting node / ending SSH session etc) it is advised to run them as services. See below example service file you can configure to ensure the dashboards are always running:
+
+  [Unit]
+  Description=F1 Demo Frontend Streamlit App
+  After=network.target
+  
+  [Service]
+  Type=simple
+  User=mapr
+  WorkingDirectory=/home/mapr/f1demo
+  Environment="LIBRARY_PATH=/opt/mapr/lib/"
+  Environment="C_INCLUDE_PATH=/opt/mapr/include/"
+  Environment="LD_LIBRARY_PATH=/opt/mapr/lib"
+  Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+  ExecStart=/usr/local/bin/streamlit run /home/mapr/f1demo/frontend.py --server.port=8501 --server.address=0.0.0.0
+  Restart=always
+  RestartSec=10
+  StandardOutput=append:/home/mapr/f1demo/frontend.log
+  StandardError=append:/home/mapr/f1demo/frontend.log
+  
+  [Install]
+  WantedBy=multi-user.target
+
+You can then enable the service as follows:
+
+  # Reload systemd
+  sudo systemctl daemon-reload
+  
+  # Enable it to start on boot
+  sudo systemctl enable f1demo-frontend.service
+  
+  # Start the service now
+  sudo systemctl start f1demo-frontend.service
+  
+  # Check the status
+  sudo systemctl status f1demo-frontend.service
+  
+  # View logs
+  sudo journalctl -u f1demo-frontend.service -f
+
+You can also do similar for the producer script:
+
+  [Unit]
+  Description=F1 Demo Producer Script
+  After=network.target
+  
+  [Service]
+  Type=simple
+  User=mapr
+  WorkingDirectory=/home/mapr/f1demo
+  Environment="LIBRARY_PATH=/opt/mapr/lib/"
+  Environment="C_INCLUDE_PATH=/opt/mapr/include/"
+  Environment="LD_LIBRARY_PATH=/opt/mapr/lib"
+  Environment="PATH=/usr/local/bin:/usr/bin:/bin"
+  ExecStart=/usr/bin/python3 /home/mapr/f1demo/producer.py
+  Restart=always
+  RestartSec=10
+  StandardOutput=append:/home/mapr/f1demo/producer.log
+  StandardError=append:/home/mapr/f1demo/producer.log
+  
+  [Install]
+  WantedBy=multi-user.target
