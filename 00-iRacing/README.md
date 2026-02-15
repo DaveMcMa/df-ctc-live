@@ -4,7 +4,7 @@ In this folder are two scripts to be hosted on the iRacing machine:
 
 ## dataserve.py
 
-This script opens a websocks on the iracing host, listens for an active iracing session, and once found broadcasts selected live telemetry via a websocket
+This script opens a websocks on the iracing host, listens for an active iracing session, and once found broadcasts selected live telemetry via a websocket. Ensure this script is running whenever there is an active iRacing session open.
 
 ## ibt_dfupload.py
 
