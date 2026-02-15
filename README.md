@@ -7,6 +7,8 @@ You must have a Windows rig with iRacing installed and a HPE Data Fabric cluster
 
 As many scripts are coded to use mapr user it is strongly recommend that on the client or cluster machines where you run producers, dashboards & jobs to have a long lived authentication to the cluster to ensure scripts do not fail due to expired ticket to the HPE Data Fabric. As user mapr, you can run: maprlogin password -duration 365:0:0
 
+When deploying scripts in a new environment you must validate configuration variables at the top of each script. All attempts were made to make this seamless (at the top of each script are the variables you need to change) however the author may have missed one or two. Keep it in mind for any troubleshooting.
+
 ## High-level Demo Architecture
 The end-state of this demo consists of 2 dashboards for displaying the ability of HPE Data Fabric to serve realtime and historical analytics from a single intelligent data platform that stores, ingests & transforms data both in realtime and batch mode. 
 
