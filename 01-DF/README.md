@@ -43,6 +43,23 @@ This is a streamlit application which listens to the live HPE Data Fabric stream
 This is a streamlit application which scans both the bestlap and leaderboard tables and displays telemetry from the best lap on record & the top ten lap times for the corresponding track
 
 
+## Running jobs automatically in sequence
+
+If your cluster is running airflow then you can configure it to run all python scripts necessary in sequence. If not then you can configure a simple cron job. Create a script that executes these scripts in sequence (as user mapr): 
+
+  1. df_load_table
+  2. df_job_bestlap
+  3. df_job_leaderboard
+
+
+Then configure a cron job like so: 
+
+crontab -e [opens cron scheduler] and add this line:
+
+
+  0 1 * * * /path/to/your/scripts/run_jobs.sh >> /path/to/your/scripts/run.log 2>&1
+
+
 ## Enabling dashboards as services in Linux
 To ensure the dashboards are always available (even when rebooting node / ending SSH session etc) it is advised to run them as services. See below example service file you can configure (save as "filename.service" in directory /etc/systemd/system/) to ensure the dashboards are always running (note that we are ensuring the python libraries are also loaded correctly using Environment=...):
 
