@@ -54,7 +54,7 @@ If your cluster is running airflow then you can configure it to run all python s
 
 Then configure a cron job like so: 
 
-crontab -e [opens cron scheduler] and add this line:
+crontab -e [opens cron scheduler] and add this line (runs script daily at 1am):
 
 
   0 1 * * * /path/to/your/scripts/run_jobs.sh >> /path/to/your/scripts/run.log 2>&1
