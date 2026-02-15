@@ -1,4 +1,4 @@
-# df-ctc-live
+# Code Repository for HPE Data Fabric iRacing demo in CTC
 Public repository of all code relating to the data fabric CTC telemetry demo.
 
 # Instructions on demo setup
