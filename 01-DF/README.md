@@ -2,10 +2,14 @@
 
 Important notes:
 
-1 - HbaseRest.py script must be saved in the same directory as the base scripts, as this is called on by other scripts.
-2 - Most scripts require you to have a valid ticket to the data fabric, even when running within the cluster - make sure you run these scripts as user with high priveleges to all resources (usually mapr) - using command "maprlogin password" for example
-3 - Historical records are stored in a HPE Data Fabric binary table - scripts here leverage the HBASE REST API server from the HPE Data Fabric - make sure this service is installed & referenced correctly.
-4 - As we are using python libraries to interact with streams & tables, make sure you have the HPE Data Fabric python client configured correctly (https://docs.ezmeral.hpe.com/datafabric-customer-managed/80/AdvancedInstallation/InstallingStreamsPYClient.html?hl=python%2Cstreams)
+1 - HbaseRest.py script must be saved in the same directory as the base scripts, as this is called on by other scripts.  
+
+2 - Most scripts require you to have a valid ticket to the data fabric, even when running within the cluster - make sure you run these scripts as user with high priveleges to all resources (usually mapr) - using command "maprlogin password" for example  
+
+3 - Historical records are stored in a HPE Data Fabric binary table - scripts here leverage the HBASE REST API server from the HPE Data Fabric - make sure this service is installed & referenced correctly.  
+
+4 - As we are using python libraries to interact with streams & tables, make sure you have the HPE Data Fabric python client configured correctly (https://docs.ezmeral.hpe.com/datafabric-customer-managed/80/AdvancedInstallation/InstallingStreamsPYClient.html?hl=python%2Cstreams)  
+
 
 ## Data Loader scripts
 The purpose of these scripts is to load live data into a data fabric topic and historical data into a data fabric table
