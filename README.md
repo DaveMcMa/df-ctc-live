@@ -1,6 +1,9 @@
 # Code Repository for HPE Data Fabric iRacing demo in CTC
 Public repository of all code relating to the data fabric CTC telemetry demo.
 
+<img width="1852" height="868" alt="image" src="https://github.com/user-attachments/assets/c7324c7f-2043-435e-9306-6bd8f4f3ea96" />
+
+
 # Instructions on demo setup
 ## Pre-requisites
 You must have a Windows rig with iRacing installed and a HPE Data Fabric cluster (latest tested version 8.0 - older versions should also work fine).
